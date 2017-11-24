@@ -31,11 +31,10 @@ def ping():
 @app.route('/post', method='POST')
 def post():
     data = bottle.request.json
-    print('bottle.request.json:', data)
-    data2 = bottle.request.forms
-    print('bottle.request.forms:', data2)
+    if data is None:
+        data = json.load(bottle.request.body)
     bottle.response.content_type = 'application/json'
-    return data or data2
+    return data
 
 
 if __name__ == '__main__':
