@@ -33,6 +33,7 @@ def slash():
     print(bottle.request.body.read())  # DEBUG
     f = bottle.request.forms
     if f['token'] != TOKEN:
+        print(f['token'], TOKEN)
         raise bottle.HTTPError(400, 'Invalid Token')
 
     response_data = '''
