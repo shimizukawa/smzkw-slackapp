@@ -32,7 +32,9 @@ def ping():
 def post():
     data = bottle.request.json
     if data is None:
-        data = json.load(bottle.request.body)
+        body = bottle.request.body.read()
+        print(body)
+        data = json.loads(body)
     bottle.response.content_type = 'application/json'
     return data
 
