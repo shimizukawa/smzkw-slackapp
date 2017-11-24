@@ -46,6 +46,8 @@ def slash():
 def post():
     data = bottle.request.json
     print(data)
+    if not data:
+        print(bottle.request.body.read())  # DEBUG
     bottle.response.content_type = 'application/json'
     return data
 
